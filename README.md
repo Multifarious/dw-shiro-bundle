@@ -38,7 +38,7 @@ Add an instance of the ShiroBundle to your service. For example,
     }
     ...
 
-Of course you will need to expose the `ShiroConfiguration` via the `MyConfiguration` instance:
+Expose the `ShiroConfiguration` via you application's root `Configuration` class.  For example,
 
     ...
     import com.yammer.dropwizard.config.Configuration;
