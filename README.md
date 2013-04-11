@@ -16,13 +16,7 @@ The rest of the functionality and configuration are provided by Shiro and/or Dro
 
 ## Usage
 
-Include the maven dependency:
-
-        <dependency>
-            <groupId>io.ifar</groupId>
-            <artifactId>dw-shiro-bundle</artifactId>
-            <version>${current.release.version}</version>
-        </dependency>
+Include [the maven dependency](#access-with-maven).
 
 Add an instance of the ShiroBundle to your service. For example,
 
