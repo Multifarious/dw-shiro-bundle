@@ -148,6 +148,22 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Adds Implementation-Title etc. to Manifest. See https://maven.apache.org/shared/maven-archiver/  -->
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <!-- Also include git SHA -->
+                        <manifestEntries>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
             <!-- buildnumber-maven-plugin will generate ${buildNumber} from git SHA (requires scm be configured) -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
