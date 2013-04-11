@@ -8,11 +8,18 @@
     <artifactId>dw-shiro-bundle</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <scm>
+        <developerConnection>scm:git:git@github.com:Multifarious/dw-shiro-bundle.git</developerConnection>
+    </scm>
+
+    <name>Dropwizard Shiro Bundle</name>
+    <description>Simplifies Shiro configuration and usage in a DropWizard stack.</description>
+    <inceptionYear>2013</inceptionYear>
+
     <organization>
         <name>Multifarious, Inc.</name>
         <url>http://mult.ifario.us/</url>
     </organization>
-    <inceptionYear>2013</inceptionYear>
     <developers>
         <developer>
             <name>Ezra Epstein</name>
@@ -72,7 +79,10 @@
         </dependency>
     </dependencies>
 
+
     <build>
+        <defaultGoal>install</defaultGoal>
+
         <resources>
             <resource>
                 <directory>.</directory>
@@ -83,6 +93,80 @@
                 </includes>
             </resource>
         </resources>
+
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.2.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-plugin</artifactId>
+                    <version>1.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <configuration>
+                    <connectionType>developerConnection</connectionType>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- buildnumber-maven-plugin will generate ${buildNumber} from git SHA (requires scm be configured) -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doCheck>false</doCheck> <!-- if true, enforce no local modifications before packaging -->
+                    <doUpdate>false</doUpdate> <!-- if true, push changes upstream after build -->
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
