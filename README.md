@@ -61,6 +61,65 @@ Expose the `ShiroConfiguration` via you application's root `Configuration` class
         ....
     }
 
+Secure a resource with Shiro.  For example, in the `[urls]` section of a Shiro `.ini` file:
+
+    [urls]
+    /login = ssl, authc
+    /protected = authc, roles[foo]
+    /logout = logout
+
+And, in the Resource you can gain access to the current user in one of two ways: JAX-RS `SecurityContext`; or Shiro `SecurityUtls`.  For example:
+
+    import javax.ws.rs.GET;
+    import javax.ws.rs.Path;
+    import javax.ws.rs.Produces;
+    import javax.ws.rs.core.Context;
+    import javax.ws.rs.core.MediaType;
+    import javax.ws.rs.core.SecurityContext;
+
+    @Path("/protected")
+    @Produces(MediaType.TEXT_PLAIN)
+    public class ProtectedResource {
+
+        /**
+         * The SecurityContext's principal will be set by Shiro if its filter intercepted the call.
+         */
+        @GET
+        public String showSecret(@Context SecurityContext context) {
+            if (context.getUserPrincipal()!=null)
+            {
+                return String.format("Hey there, %s. I know you!",
+                        context.getUserPrincipal().getName());
+            }
+            return "Access denied.";
+        }
+        ....
+    }
+
+Note that the above call **does not mean the recognized user logged-in** during this session.  It could be the user was identified via a `rememberMe` cookie.
+
+To get the Shiro Subject directly and check `isAuthenticated()`, meaning the user **did login** during this session, use Shiro's SecurityUtils class:
+
+    import org.apache.shiro.SecurityUtils;
+    import org.apache.shiro.subject.Subject;
+    import javax.ws.rs.*;
+    import javax.ws.rs.core.MediaType;
+
+    @Path("/loginCheck")
+    @Produces({MediaType.TEXT_PLAIN})
+    public class FooResource {
+        @GET
+        public String isLoggedIn()
+        {
+            final Subject s = SecurityUtils.getSubject();
+            if (s != null && s.isAuthenticated()) {
+                return String.format("Logged in as '%s'.", s.getPrincipal());
+            } else {
+                return "Not logged in.";
+            }
+        }
+    }
+
 
 ## Configuration
 
