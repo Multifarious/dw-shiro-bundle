@@ -106,31 +106,27 @@ Alternatively, configure Shiro's SecurityManager to use Shiro's built-in session
 
 Include the following in your `pom.xml`:
 
-<pre>
-&lt;dependency>
-  &lt;groupId>io.ifar&lt;/groupId>
-  &lt;artifactId>dw-shiro-bundle&lt;/artifactId>
-  &lt;version>0.0.1-SNAPSHOT&lt;/version>
-&lt;/dependency>
-</pre>
+    <dependency>
+      <groupId>io.ifar</groupId>
+      <artifactId>dw-shiro-bundle</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 
 ### Snapshots
 
 Snapshots are available from the following Maven repository:
 
-<pre>
-&lt;repository>
-  &lt;id>multifarious-snapshots&lt;/id>
-  &lt;name>Multifarious, Inc. Snapshot Repository&lt;/name>
-  &lt;url>http://repository-multifarious.forge.cloudbees.com/snapshot/&lt;/url>
-  &lt;snapshots>
-    &lt;enabled>true&lt;/enabled>
-  &lt;/snapshots>
-  &lt;releases>
-    &lt;enabled>false&lt;/enabled>
-  &lt;/releases>
-&lt;/repository>
-</pre>
+    <repository>
+      <id>multifarious-snapshots</id>
+      <name>Multifarious, Inc. Snapshot Repository</name>
+      <url>http://repository-multifarious.forge.cloudbees.com/snapshot/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
 
 ### Releases
 
