@@ -1,4 +1,5 @@
-# io.ifar: dw-shiro-bundle
+# dw-shiro-bundle
+----
 
 ShiroBundle for DropWizard.
 
