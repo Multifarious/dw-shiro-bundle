@@ -13,10 +13,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A simple bundle class to initialze Shiro within Dropwizard.
- *
- * Project: dw-shiro-bundle
- * User: ezra
- * Date: 4/1/13
  */
 public abstract class ShiroBundle<T extends Configuration>
         implements ConfiguredBundle<T>, ConfigurationStrategy<T> {

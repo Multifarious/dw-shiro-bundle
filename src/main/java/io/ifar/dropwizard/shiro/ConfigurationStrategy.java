@@ -5,10 +5,6 @@ import com.yammer.dropwizard.config.Configuration;
 
 /**
  * Interface for accessing the optional ShiroConfiguration section from a DropWizard service configuration.
- *
- * Project: dw-shiro-bundle
- * User: ezra
- * Date: 4/1/13
  */
 public interface ConfigurationStrategy<T extends Configuration> {
 

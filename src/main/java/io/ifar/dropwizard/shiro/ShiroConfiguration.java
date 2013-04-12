@@ -9,10 +9,6 @@ import com.google.common.base.Objects;
  *     To specify a non-default location for the Shiro .ini file set the 'shiroConfigLocations' Servlet contextParam.
  *     In DropWizard that's in http configuration's {@code contextParameters} Map.
  * </p>
- *
- * Project: dw-shiro-bundle
- * User: ezra
- * Date: 4/1/13
  */
 public class ShiroConfiguration {
 
