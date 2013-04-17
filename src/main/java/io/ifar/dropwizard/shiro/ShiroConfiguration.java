@@ -15,7 +15,7 @@ public class ShiroConfiguration {
     /**
      * Default URL pattern for the ShiroFilter.
      */
-    final static String DEFAULT_FILTER_URL_PATTERN = "/*";
+    final static String DEFAULT_SECURED_URL_PATTERN = "/*";
 
     /**
      * Default is {@code false}.
@@ -25,10 +25,10 @@ public class ShiroConfiguration {
 
     // could support more than one pattern ...
     /**
-     * Default is {@link #DEFAULT_FILTER_URL_PATTERN}.
+     * Default is {@link #DEFAULT_SECURED_URL_PATTERN}.
      */
-    @JsonProperty("filter_url_pattern")
-    private String filterUrlPattern = DEFAULT_FILTER_URL_PATTERN;
+    @JsonProperty("secured_url_pattern")
+    private String securedUrlPattern = DEFAULT_SECURED_URL_PATTERN;
 
     /**
      * Default is {@code false}.
@@ -48,8 +48,8 @@ public class ShiroConfiguration {
      * Currently supports a single URL-pattern.
      * @return the ShiroFilter will be configured to intercept URLS matching the returned url pattern.
      */
-    public String getFilterUrlPattern() {
-        return filterUrlPattern;
+    public String getSecuredUrlPattern() {
+        return securedUrlPattern;
     }
 
     /**
@@ -75,9 +75,9 @@ public class ShiroConfiguration {
      */
     protected Objects.ToStringHelper toStringHelper() {
         return Objects.toStringHelper(this.getClass().getSimpleName())
-                .add("enabled", enabled)
-                .add("filterUrlPattern", filterUrlPattern)
-                .add("dropwizardSessionHandler", dropwizardSessionHandler)
+                .add("enabled (enabled)", enabled)
+                .add("securedUrlPattern (secured_url_pattern)", securedUrlPattern)
+                .add("dropwizardSessionHandler (dropwizard_session_handler)", dropwizardSessionHandler)
                 ;
     }
 

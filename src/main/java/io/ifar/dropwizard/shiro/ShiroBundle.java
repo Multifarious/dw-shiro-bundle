@@ -59,7 +59,7 @@ public abstract class ShiroBundle<T extends Configuration>
             // e.g., via the shiroConfigLocations ContextParameter with fall-backs to default locations if that parameter isn't specified.
             environment.addServletListeners(new EnvironmentLoaderListener());
 
-            final String filterUrlPattern = config.getFilterUrlPattern();
+            final String filterUrlPattern = config.getSecuredUrlPattern();
             LOG.debug("ShiroFilter will check URLs matching '{}'.", filterUrlPattern);
             environment.addFilter(new ShiroFilter(), filterUrlPattern).setName("shiro-filter");
         } else {
