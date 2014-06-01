@@ -35,10 +35,10 @@
     </licenses>
 
     <properties>
-        <guava.version>14.0.1</guava.version>
+        <guava.version>16.0.1</guava.version>
 
-        <shiro.version>1.2.1</shiro.version>
-        <dropwizard.version>0.6.2</dropwizard.version>
+        <shiro.version>1.2.3</shiro.version>
+        <dropwizard.version>0.7.0</dropwizard.version>
         <slf4j.version>1.7.4</slf4j.version>
 
         <junit.version>4.11</junit.version>
@@ -66,7 +66,7 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.yammer.dropwizard</groupId>
+            <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
             <version>${dropwizard.version}</version>
             <scope>provided</scope>

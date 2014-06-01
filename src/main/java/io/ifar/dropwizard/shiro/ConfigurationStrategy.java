@@ -1,7 +1,8 @@
 package io.ifar.dropwizard.shiro;
 
+import io.dropwizard.Configuration;
+
 import com.google.common.base.Optional;
-import com.yammer.dropwizard.config.Configuration;
 
 /**
  * Interface for accessing the optional ShiroConfiguration section from a DropWizard service configuration.
