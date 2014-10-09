@@ -4,12 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.ifar</groupId>
+    <groupId>io.ifar.dw-shiro-bundle</groupId>
     <artifactId>dw-shiro-bundle</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1-SNAPSHOT</version>
 
     <scm>
+        <url>https://github.com/Multifarious/dw-shiro-bundle</url>
         <developerConnection>scm:git:git@github.com:Multifarious/dw-shiro-bundle.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
     <name>Dropwizard Shiro Bundle</name>
@@ -20,11 +22,6 @@
         <name>Multifarious, Inc.</name>
         <url>http://mult.ifario.us/</url>
     </organization>
-    <developers>
-        <developer>
-            <name>Ezra Epstein</name>
-        </developer>
-    </developers>
 
     <licenses>
         <license>
@@ -35,11 +32,10 @@
     </licenses>
 
     <properties>
-        <guava.version>16.0.1</guava.version>
-
+        <guava.version>17.0</guava.version>
         <shiro.version>1.2.3</shiro.version>
-        <dropwizard.version>0.7.0</dropwizard.version>
-        <slf4j.version>1.7.4</slf4j.version>
+        <dropwizard.version>0.7.1</dropwizard.version>
+        <slf4j.version>1.7.7</slf4j.version>
 
         <junit.version>4.11</junit.version>
 
@@ -99,7 +95,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.0</version>
+                    <version>3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -183,5 +179,52 @@
             </plugin>
         </plugins>
     </build>
+
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <configuration>
+                            <passphrase>${gpg.passphrase}</passphrase>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus snapshot repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Sonatype Nexus release repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
