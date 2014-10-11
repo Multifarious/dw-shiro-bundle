@@ -169,17 +169,17 @@ Include the following in your `pom.xml`:
     <dependency>
       <groupId>io.ifar</groupId>
       <artifactId>dw-shiro-bundle</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1</version>
     </dependency>
 
 ### Snapshots
 
-Snapshots are available from the following Maven repository:
+Snapshots are available from the [Sonatype OSS Snapshots repository](https://oss.sonatype.org/content/repositories/snapshots/):
 
     <repository>
-      <id>multifarious-snapshots</id>
-      <name>Multifarious, Inc. Snapshot Repository</name>
-      <url>http://repository-multifarious.forge.cloudbees.com/snapshot/</url>
+      <id>sonatype-oss</id>
+      <name>Sonatype OSS Snapshot Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
@@ -187,10 +187,6 @@ Snapshots are available from the following Maven repository:
         <enabled>false</enabled>
       </releases>
     </repository>
-
-### Releases
-
-None as yet, but when there are, they will be published via Maven Central.
 
 ## License
 
